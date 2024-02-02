@@ -3,75 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/nike" rel="stylesheet">
     <title>Item Gallery</title>
     <style>
-        /* Style for the gallery container */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-
-        /* Style for each item in the gallery */
-        .gallery-item {
-            border: 5px solid #ffffff; /* Custom border style: 2px solid blue */
-            padding: 10px;
-            text-align: center;
-            position: relative; /* To position the button relative to the item */
-            color: #f9f6f6;
-        }
-
-        /* Responsive images within each item */
-        .gallery-item img {
-            max-width: 100%;
-            height: auto;
-            cursor: pointer; /* Add a pointer cursor to indicate clickability */
-            
-        }
 
         body {
-            font-family:Georgia, 'Times New Roman', Times, serif;
+          font-family: 'Nike', sans-serif;
             line-height: 1.6;
             margin: 20px; 
             background-color: black;
         }
 
         nav {
-            background-color: #ffffff; /* Dark background color */
             padding: 10px;
             display: flex;
-            align-items: center;
-            justify-content: space-between; /* Distribute items evenly */
-        }
-
-        .navbar-container {
-            display: flex;
-            align-items: center;
+            align-items: center; /* Center vertically within the nav */
+            justify-content: center; /* Center horizontally */ 
+            background-color: transparent; /* Optional background color */
         }
 
         .logo {
-            max-width: 50px; /* Smaller logo size */
+            max-width: 100px;
             height: auto;
-            margin-right: 10px;
+            margin-right: 20px; /* Optional margin to separate logo from links */
         }
 
         nav a {
-            color: #000000;
+            color: rgb(255, 255, 255);
             text-decoration: none;
             padding: 10px;
             margin-right: 10px;
-            transition: background-color 0.3s ease;
-            border-radius: 10px;
         }
 
         nav a:hover {
-            background-color: #e4dcdc; /* Darker background on hover */
+            background-color: #fffdfd;
+            border-radius: 20px;
+            text-decoration: none;
+            color: black;
         }
 
         nav a.active {
-            background-color: #4CAF50;
             color: white;
+            text-decoration: none;
         }
 
         /* Add a search bar to the navbar */
@@ -103,176 +76,88 @@
         p {
             font-family: Georgia, 'Times New Roman', Times, serif;
         }
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            justify-content: center;
-            align-items: center;
-        }
 
-        .modal-content {
-            max-width: 80%;
-            max-height: 80%;
-            overflow: auto;
-            background-color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
+        .container {
+  display: flex;
+  width: 100%;
+  padding: 4% 2%;
+  box-sizing: border-box;
+  height: 100vh;
+}
 
-        .modal-img {
-            max-width: 50%;
-            max-height: 70vh;
-            height: auto;
-            margin-bottom: 10px;
-        }
+.box {  
+  flex: 1;
+  overflow: hidden;
+  transition: .5s;
+  margin: 0 2%;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  line-height: 0;
+}
 
-        .modal-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: black;
-        }
+.box > img {
+  width: 200%;
+  height: calc(100% - 10vh);
+  object-fit: cover; 
+  transition: .5s;
+}
 
-        .modal-description {
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
+.box > span {
+  font-size: 2.0vh;
+  display: block;
+  text-align: center;
+  height: 10vh;
+  line-height: 2.6;
+  color: #ffffff;
+}
 
-        .modal-text-clicked {
-            font-size: 18px;
-            font-style: italic;
-            margin-top: 20px;
-        }
-        h1 {
-            align-items: center;
-            justify-content: center;
-            display: flex ;
-            color: #f9f6f6;
-        }
+.box:hover { flex: 1 1 50%; }
+.box:hover > img {
+  width: 100%;
+  height: 100%;
+}
+h1 {
+    text-align: center;
+}
     </style>
 </head>
 <body>
-    <nav>
-        <!-- Logo remains unchanged -->
-        <div class="navbar-container">
-            <img src="https://customisation.club/cdn/shop/products/Nike-Swoosh-Logo-Iron-On-Red_f0ae3378-632a-4d68-9b9d-86311a94cb52_530x@2x.jpg?v=1682791178" alt="Logo" height="50px" class="logo">
-            <a href="index.html">HOME</a>
-            <a href="gallery.html">ITEM GALLERY</a>
-            <a href="about.html">ABOUT</a>
-
-    </nav>
+  <nav>
+    <img src="https://static.vecteezy.com/system/resources/previews/010/994/411/original/nike-logo-white-clothes-design-icon-abstract-football-illustration-with-black-background-free-vector.jpg" alt="Logo" height="100px" class="logo">
+    <a href="index.html">HOME</a>
+    <a href="gallery.html">ITEM GALLERY</a>
+    <a href="about.html">ABOUT</a>
+  </nav>
     <h1>Item Gallery</h1>
-
-    <div class="gallery">
-        <!-- Item 1 -->
-        <div class="gallery-item" onclick="openModal(
-            'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/9e807aad-42e9-46e5-8f08-34e141e718e5/nikecourt-legacy-shoes-PKg8wX.png',
-            'NikeCourt Legacy',
-            'Classic tennis shoes with a modern twist.',
-            'You clicked the NikeCourt Legacy modal!'
-        )">
-            <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/9e807aad-42e9-46e5-8f08-34e141e718e5/nikecourt-legacy-shoes-PKg8wX.png" alt="Item 1">
-            <p>NikeCourt Legacy</p>
+    <div class="container">
+        <div class="box">
+          <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/b1bcbca4-e853-4df7-b329-5be3c61ee057/dunk-low-retro-shoe-66RGqF.png">
+          <span>Nike Dunk Low Retro</span>
         </div>
-
-        <!-- Item 2 -->
-        <div class="gallery-item" onclick="openModal(
-            'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/6cb6ce5f-37fa-4757-82c0-bfc3babec8a9/sb-chron-2-canvas-skate-shoe-zdBtfH.png',
-            'Nike SB Chron 2 Canvas',
-            'Durable and stylish skate shoes for every skater.',
-            'You clicked the Nike SB Chron 2 Canvas modal!'
-        )">
-            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/6cb6ce5f-37fa-4757-82c0-bfc3babec8a9/sb-chron-2-canvas-skate-shoe-zdBtfH.png" alt="Item 2">
-            <p>Nike SB Chron 2 Canvas</p>
+        <div class="box">
+          <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/14de6943-8c87-4b9b-9585-80dea96a70d3/air-max-97-shoes-EBZrb8.png">
+          <span>Nike Air Max 97</span>
         </div>
-
-        <!-- Item 3 -->
-        <div class="gallery-item" onclick="openModal(
-            'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a41255d9-93cd-4502-bb7f-25decd426e7a/sb-zoom-blazer-low-pro-gt-skate-shoes-ckWK6g.png',
-            'Nike SB Zoom Blazer Low Pro GT',
-            'High-performance skate shoes with Zoom technology.',
-            'You clicked the Nike SB Zoom Blazer Low Pro GT modal!'
-        )">
-            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a41255d9-93cd-4502-bb7f-25decd426e7a/sb-zoom-blazer-low-pro-gt-skate-shoes-ckWK6g.png" alt="Item 3">
-            <p>Nike SB Zoom Blazer Low Pro GT</p>
+        <div class="box">
+          <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/fc4622c4-2769-4665-aa6e-42c974a7705e/air-force-1-07-shoes-WrLlWX.png">
+          <span>Nike Air Force 1 '07</span>
         </div>
-
-        <!-- Item 4 -->
-        <div class="gallery-item" onclick="openModal(
-            'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/b1bcbca4-e853-4df7-b329-5be3c61ee057/dunk-low-retro-shoe-66RGqF.png',
-            'Nike Dunk Low Retro',
-            'Iconic low-top basketball shoes with retro design.',
-            'You clicked the Nike Dunk Low Retro modal!'
-        )">
-            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/b1bcbca4-e853-4df7-b329-5be3c61ee057/dunk-low-retro-shoe-66RGqF.png" alt="Item 4">
-            <p>Nike Dunk Low Retro</p>
-        </div>  
-    
-        <!-- Item 5 -->
-        <div class="gallery-item" onclick="openModal(
-            'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/fc4622c4-2769-4665-aa6e-42c974a7705e/air-force-1-07-shoes-WrLlWX.png',
-            'Nike Air Force 1 \'07',
-            'Timeless classic with premium leather upper.',
-            'You clicked the Nike Air Force 1 \'07 modal!'
-        )">
-            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/fc4622c4-2769-4665-aa6e-42c974a7705e/air-force-1-07-shoes-WrLlWX.png" alt="Item 5">
-            <p>Nike Air Force 1 '07</p>
-        </div>      
-        
-        <!-- Item 6 -->
-        <div class="gallery-item" onclick="openModal(
-            'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f56ea202-9af9-4cc7-9b26-77585f8ca525/e-series-ad-shoes-hLR5pR.png',
-            'Nike E-Series AD',
-            'Comfortable and stylish athletic shoes for everyday wear.',
-            'You clicked the Nike E-Series AD modal!'
-        )">
-            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/f56ea202-9af9-4cc7-9b26-77585f8ca525/e-series-ad-shoes-hLR5pR.png" alt="Item 6">
-            <p>Nike E-Series AD</p>
-        </div>   
-        <!-- Add more items as needed -->
-    </div>
-
-    <!-- Modal -->
-    <div id="myModal" class="modal" onclick="closeModal()">
-        <div class="modal-content">
-            <img id="modalImg" class="modal-img" src="" alt="Modal Image">
-            <div class="modal-text">
-                <h2 id="modalTitle" class="modal-title"></h2>
-                <p id="modalDescription" class="modal-description"></p>
-                <p id="modalTextClicked" class="modal-text-clicked"></p>
-            </div>
-            <a href=""></a>
+        <div class="box">
+          <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/d762c5e2-ae49-4208-99df-484594b51e5f/air-force-1-07-shoe-HWWX9W.png">
+          <span>Nike Air Force 1 '07
+        </span>
         </div>
-    </div>
+        <div class="box">
+            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/fb1addb3-4a0e-42b3-ba15-70ba134f2bd3/p-6000-shoe-qx8GmG.png">
+            <span>Nike P-6000   
+          </span>
+          </div>
+          <div class="box">
+            <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/2369840e-f302-4a2a-a33b-daf10e8a818f/air-max-90-shoes-hkwJRC.png">
+            <span>Nike Air Max 90
+          </span>
+          </div>
+      </div>
 
-    <script>
-        function openModal(imageSrc, title, description, clickedText) {
-            var modal = document.getElementById("myModal");
-            var modalImg = document.getElementById("modalImg");
-            var modalTitle = document.getElementById("modalTitle");
-            var modalDescription = document.getElementById("modalDescription");
-            var modalTextClicked = document.getElementById("modalTextClicked");
 
-            modal.style.display = "flex";
-            modalImg.src = imageSrc;
-            modalTitle.textContent = title;
-            modalDescription.textContent = description;
-            modalTextClicked.textContent = ''; // Clear previous clicked text
-
-            document.getElementById("myModal").addEventListener("click", function () {
-                modalTextClicked.textContent = clickedText || "You clicked the modal!";
-            });
-        }
-
-        function closeModal() {
-            var modal = document.getElementById("myModal");
-            modal.style.display = "none";
-        }
-    </script>
 </body>
 </html> 
